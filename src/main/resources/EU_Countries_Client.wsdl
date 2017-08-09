@@ -1,0 +1,560 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://soap.countries.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CountryProcessorService" targetNamespace="http://soap.countries.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://soap.countries.com/" elementFormDefault="unqualified" targetNamespace="http://soap.countries.com/" version="1.0">
+
+  <xs:element name="getCountries" type="tns:getCountries"/>
+
+  <xs:element name="getCountriesResponse" type="tns:getCountriesResponse"/>
+
+  <xs:element name="getCountryById" type="tns:getCountryById"/>
+
+  <xs:element name="getCountryByIdResponse" type="tns:getCountryByIdResponse"/>
+
+  <xs:element name="getCountryDetailsByCountryCode" type="tns:getCountryDetailsByCountryCode"/>
+
+  <xs:element name="getCountryDetailsByCountryCodeResponse" type="tns:getCountryDetailsByCountryCodeResponse"/>
+
+  <xs:element name="getCountryDetailsByCountryName" type="tns:getCountryDetailsByCountryName"/>
+
+  <xs:element name="getCountryDetailsByCountryNameResponse" type="tns:getCountryDetailsByCountryNameResponse"/>
+
+  <xs:element name="getGdpByYear" type="tns:getGdpByYear"/>
+
+  <xs:element name="getGdpByYearResponse" type="tns:getGdpByYearResponse"/>
+
+  <xs:element name="getGprByCountry" type="tns:getGprByCountry"/>
+
+  <xs:element name="getGprByCountryNameAndYear" type="tns:getGprByCountryNameAndYear"/>
+
+  <xs:element name="getGprByCountryNameAndYearResponse" type="tns:getGprByCountryNameAndYearResponse"/>
+
+  <xs:element name="getGprByCountryResponse" type="tns:getGprByCountryResponse"/>
+
+  <xs:element name="getUnemploymentByCountry" type="tns:getUnemploymentByCountry"/>
+
+  <xs:element name="getUnemploymentByCountryNameAndYear" type="tns:getUnemploymentByCountryNameAndYear"/>
+
+  <xs:element name="getUnemploymentByCountryNameAndYearResponse" type="tns:getUnemploymentByCountryNameAndYearResponse"/>
+
+  <xs:element name="getUnemploymentByCountryResponse" type="tns:getUnemploymentByCountryResponse"/>
+
+  <xs:element name="getUnemploymentByYear" type="tns:getUnemploymentByYear"/>
+
+  <xs:element name="getUnemploymentByYearResponse" type="tns:getUnemploymentByYearResponse"/>
+
+  <xs:complexType name="getUnemploymentByCountryNameAndYear">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:countryNameAndYearRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countryNameAndYearRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="country_name_and_year" type="tns:countryNameAndYear"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countryNameAndYear">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="country_name" type="xs:string"/>
+      <xs:element name="year" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUnemploymentByCountryNameAndYearResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:unemploymentByCountryNameAndYearResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="unemploymentByCountryNameAndYearResponse">
+    <xs:sequence>
+      <xs:element name="unemployment" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCountryById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:countryCodeRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countryCodeRequest">
+    <xs:sequence>
+      <xs:element name="country_code" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCountryByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:countryResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="country" type="tns:country"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="country">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="country_name" type="xs:string"/>
+      <xs:element minOccurs="0" name="country_code" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getGdpByYear">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:yearRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="yearRequest">
+    <xs:sequence>
+      <xs:element name="year" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getGdpByYearResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:gdpByYearResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gdpByYearResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="country_name_and_gdp" type="tns:countryNameAndGdp"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countryNameAndGdp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="country_name" type="xs:string"/>
+      <xs:element name="gdp" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getGprByCountry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:countryNameRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countryNameRequest">
+    <xs:sequence>
+      <xs:element name="country_name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getGprByCountryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:gdpByCountryNameResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gdpByCountryNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="gdp" type="tns:grosDomesticProduct"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="grosDomesticProduct">
+    <xs:sequence>
+      <xs:element name="gdp_2003" type="xs:double"/>
+      <xs:element name="gdp_2004" type="xs:double"/>
+      <xs:element name="gdp_2005" type="xs:double"/>
+      <xs:element name="gdp_2006" type="xs:double"/>
+      <xs:element name="gdp_2007" type="xs:double"/>
+      <xs:element name="gdp_2008" type="xs:double"/>
+      <xs:element name="gdp_2009" type="xs:double"/>
+      <xs:element name="gdp_2010" type="xs:double"/>
+      <xs:element name="gdp_2011" type="xs:double"/>
+      <xs:element name="gdp_2012" type="xs:double"/>
+      <xs:element name="gdp_2013" type="xs:double"/>
+      <xs:element name="gdp_2014" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCountries">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:countriesRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countriesRequest">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getCountriesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:countriesResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countriesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="countries" type="tns:country"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getGprByCountryNameAndYear">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:countryNameAndYearRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getGprByCountryNameAndYearResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:gdpByCountryNameAndYearResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gdpByCountryNameAndYearResponse">
+    <xs:sequence>
+      <xs:element name="gdp" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCountryDetailsByCountryCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:countryCodeRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCountryDetailsByCountryCodeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:countryDetailsResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countryDetailsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="country_details" type="tns:countryDetails"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countryDetails">
+    <xs:sequence>
+      <xs:element name="area" type="xs:long"/>
+      <xs:element name="population" type="xs:long"/>
+      <xs:element minOccurs="0" name="capital" type="xs:string"/>
+      <xs:element minOccurs="0" name="currency" type="xs:string"/>
+      <xs:element name="gros_domestic_product" type="xs:long"/>
+      <xs:element name="gros_domestic_product_per_person" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUnemploymentByCountry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:countryNameRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUnemploymentByCountryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:unemploymentByCountryNameResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="unemploymentByCountryNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="unemployment" type="tns:unemployment"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="unemployment">
+    <xs:sequence>
+      <xs:element name="unemployment_2003" type="xs:double"/>
+      <xs:element name="unemployment_2004" type="xs:double"/>
+      <xs:element name="unemployment_2005" type="xs:double"/>
+      <xs:element name="unemployment_2006" type="xs:double"/>
+      <xs:element name="unemployment_2007" type="xs:double"/>
+      <xs:element name="unemployment_2008" type="xs:double"/>
+      <xs:element name="unemployment_2009" type="xs:double"/>
+      <xs:element name="unemployment_2010" type="xs:double"/>
+      <xs:element name="unemployment_2011" type="xs:double"/>
+      <xs:element name="unemployment_2012" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCountryDetailsByCountryName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:countryNameRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCountryDetailsByCountryNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:countryDetailsResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUnemploymentByYear">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:yearRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUnemploymentByYearResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:unemploymentByYearResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="unemploymentByYearResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="country_name_and_year" type="tns:countryNameAndUnemployment"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="countryNameAndUnemployment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="country_name" type="xs:string"/>
+      <xs:element name="unemployment" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getCountryById">
+    <wsdl:part element="tns:getCountryById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGprByCountryResponse">
+    <wsdl:part element="tns:getGprByCountryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUnemploymentByYearResponse">
+    <wsdl:part element="tns:getUnemploymentByYearResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGprByCountry">
+    <wsdl:part element="tns:getGprByCountry" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUnemploymentByCountryNameAndYearResponse">
+    <wsdl:part element="tns:getUnemploymentByCountryNameAndYearResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountries">
+    <wsdl:part element="tns:getCountries" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryDetailsByCountryCodeResponse">
+    <wsdl:part element="tns:getCountryDetailsByCountryCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGprByCountryNameAndYearResponse">
+    <wsdl:part element="tns:getGprByCountryNameAndYearResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUnemploymentByCountry">
+    <wsdl:part element="tns:getUnemploymentByCountry" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryByIdResponse">
+    <wsdl:part element="tns:getCountryByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountriesResponse">
+    <wsdl:part element="tns:getCountriesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUnemploymentByYear">
+    <wsdl:part element="tns:getUnemploymentByYear" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUnemploymentByCountryResponse">
+    <wsdl:part element="tns:getUnemploymentByCountryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUnemploymentByCountryNameAndYear">
+    <wsdl:part element="tns:getUnemploymentByCountryNameAndYear" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGdpByYear">
+    <wsdl:part element="tns:getGdpByYear" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGdpByYearResponse">
+    <wsdl:part element="tns:getGdpByYearResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGprByCountryNameAndYear">
+    <wsdl:part element="tns:getGprByCountryNameAndYear" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryDetailsByCountryCode">
+    <wsdl:part element="tns:getCountryDetailsByCountryCode" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryDetailsByCountryName">
+    <wsdl:part element="tns:getCountryDetailsByCountryName" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryDetailsByCountryNameResponse">
+    <wsdl:part element="tns:getCountryDetailsByCountryNameResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CountryProcessor">
+    <wsdl:operation name="getUnemploymentByCountryNameAndYear">
+      <wsdl:input message="tns:getUnemploymentByCountryNameAndYear" name="getUnemploymentByCountryNameAndYear">
+    </wsdl:input>
+      <wsdl:output message="tns:getUnemploymentByCountryNameAndYearResponse" name="getUnemploymentByCountryNameAndYearResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountryById">
+      <wsdl:input message="tns:getCountryById" name="getCountryById">
+    </wsdl:input>
+      <wsdl:output message="tns:getCountryByIdResponse" name="getCountryByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGdpByYear">
+      <wsdl:input message="tns:getGdpByYear" name="getGdpByYear">
+    </wsdl:input>
+      <wsdl:output message="tns:getGdpByYearResponse" name="getGdpByYearResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGprByCountry">
+      <wsdl:input message="tns:getGprByCountry" name="getGprByCountry">
+    </wsdl:input>
+      <wsdl:output message="tns:getGprByCountryResponse" name="getGprByCountryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountries">
+      <wsdl:input message="tns:getCountries" name="getCountries">
+    </wsdl:input>
+      <wsdl:output message="tns:getCountriesResponse" name="getCountriesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGprByCountryNameAndYear">
+      <wsdl:input message="tns:getGprByCountryNameAndYear" name="getGprByCountryNameAndYear">
+    </wsdl:input>
+      <wsdl:output message="tns:getGprByCountryNameAndYearResponse" name="getGprByCountryNameAndYearResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountryDetailsByCountryCode">
+      <wsdl:input message="tns:getCountryDetailsByCountryCode" name="getCountryDetailsByCountryCode">
+    </wsdl:input>
+      <wsdl:output message="tns:getCountryDetailsByCountryCodeResponse" name="getCountryDetailsByCountryCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUnemploymentByCountry">
+      <wsdl:input message="tns:getUnemploymentByCountry" name="getUnemploymentByCountry">
+    </wsdl:input>
+      <wsdl:output message="tns:getUnemploymentByCountryResponse" name="getUnemploymentByCountryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountryDetailsByCountryName">
+      <wsdl:input message="tns:getCountryDetailsByCountryName" name="getCountryDetailsByCountryName">
+    </wsdl:input>
+      <wsdl:output message="tns:getCountryDetailsByCountryNameResponse" name="getCountryDetailsByCountryNameResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUnemploymentByYear">
+      <wsdl:input message="tns:getUnemploymentByYear" name="getUnemploymentByYear">
+    </wsdl:input>
+      <wsdl:output message="tns:getUnemploymentByYearResponse" name="getUnemploymentByYearResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CountryProcessorServiceSoapBinding" type="tns:CountryProcessor">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getUnemploymentByCountryNameAndYear">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUnemploymentByCountryNameAndYear">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUnemploymentByCountryNameAndYearResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountryById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCountryById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountryByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGdpByYear">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getGdpByYear">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getGdpByYearResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGprByCountry">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getGprByCountry">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getGprByCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountries">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCountries">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountriesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGprByCountryNameAndYear">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getGprByCountryNameAndYear">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getGprByCountryNameAndYearResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountryDetailsByCountryCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCountryDetailsByCountryCode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountryDetailsByCountryCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUnemploymentByCountry">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUnemploymentByCountry">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUnemploymentByCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountryDetailsByCountryName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCountryDetailsByCountryName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountryDetailsByCountryNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUnemploymentByYear">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUnemploymentByYear">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUnemploymentByYearResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CountryProcessorService">
+    <wsdl:port binding="tns:CountryProcessorServiceSoapBinding" name="CountryProcessorPort">
+      <soap:address location="http://localhost:8081/EU_Countries/services/countryProcessor"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
