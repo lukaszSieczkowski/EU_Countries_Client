@@ -37,8 +37,18 @@ public class CountryNameAndYear {
     @XmlElement(name = "country_name")
     protected String countryName;
     protected int year;
+    
+    public CountryNameAndYear() {
+		super();
+	}
 
-    /**
+	public CountryNameAndYear(String countryName, int year) {
+		super();
+		this.countryName = countryName;
+		this.year = year;
+	}
+
+	/**
      * Gets the value of the countryName property.
      * 
      * @return

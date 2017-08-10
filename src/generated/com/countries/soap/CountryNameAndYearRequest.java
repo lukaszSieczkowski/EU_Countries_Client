@@ -35,7 +35,19 @@ public class CountryNameAndYearRequest {
     @XmlElement(name = "country_name_and_year")
     protected CountryNameAndYear countryNameAndYear;
 
-    /**
+
+	public CountryNameAndYearRequest() {
+		super();
+	}
+	
+	public CountryNameAndYearRequest(CountryNameAndYear countryNameAndYear) {
+		super();
+		this.countryNameAndYear = countryNameAndYear;
+	}
+
+
+
+	/**
      * Gets the value of the countryNameAndYear property.
      * 
      * @return

@@ -34,8 +34,17 @@ public class CountryNameRequest {
 
     @XmlElement(name = "country_name", required = true)
     protected String countryName;
+    
+   
+    public CountryNameRequest() {
+		super();
+	}
 
-    /**
+	public CountryNameRequest(String countryName) {
+		this.countryName = countryName;
+	}
+
+	/**
      * Gets the value of the countryName property.
      * 
      * @return
@@ -46,6 +55,9 @@ public class CountryNameRequest {
     public String getCountryName() {
         return countryName;
     }
+    
+    
+   
 
     /**
      * Sets the value of the countryName property.

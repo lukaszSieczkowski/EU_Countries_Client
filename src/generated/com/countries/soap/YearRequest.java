@@ -32,8 +32,16 @@ import javax.xml.bind.annotation.XmlType;
 public class YearRequest {
 
     protected int year;
+    
+    public YearRequest() {
+		super();
+	}
 
-    /**
+	public YearRequest(int year) {
+		this.year = year;
+	}
+
+	/**
      * Gets the value of the year property.
      * 
      */
