@@ -2,8 +2,17 @@ package com.countries.client;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+
+import org.apache.cxf.endpoint.Client;
+import org.apache.cxf.endpoint.Endpoint;
+import org.apache.cxf.frontend.ClientProxy;
+import org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor;
+import org.apache.wss4j.dom.WSConstants;
+import org.apache.wss4j.dom.handler.WSHandlerConstants;
 
 import com.countries.soap.CountriesRequest;
 import com.countries.soap.CountriesResponse;
@@ -36,7 +45,18 @@ public class ClientOperations {
 			service = new CountryProcessorService(
 					new URL("http://localhost:8081/EU_Countries/services/countryProcessor?wsdl"));
 			countryProcessorPort = service.getCountryProcessorPort();
+			Client client = ClientProxy.getClient(countryProcessorPort);
+			Endpoint endpoint = client.getEndpoint();
+
+			Map<String, Object> props = new HashMap<String, Object>();
+			props.put(WSHandlerConstants.ACTION, WSHandlerConstants.USERNAME_TOKEN);
+			props.put(WSHandlerConstants.USER, "cxf");
+			props.put(WSHandlerConstants.PASSWORD_TYPE, WSConstants.PW_TEXT);
+			props.put(WSHandlerConstants.PW_CALLBACK_CLASS, PasswordCallback.class.getName());
+			WSS4JOutInterceptor wssOut = new WSS4JOutInterceptor(props);
+			endpoint.getOutInterceptors().add(wssOut);
 		} catch (MalformedURLException e) {
+
 			e.printStackTrace();
 		}
 	}
@@ -45,6 +65,7 @@ public class ClientOperations {
 		System.out.println("Enter Country Code:");
 		Scanner input = new Scanner(System.in);
 		String value = input.nextLine();
+
 		CountryCodeRequest request = new CountryCodeRequest(value);
 		CountryResponse countryResponse = countryProcessorPort.getCountryById(request);
 		System.out.println("********************RESULT**********************");
@@ -52,9 +73,11 @@ public class ClientOperations {
 				countryResponse.getCountry().getCountryName() + " " + countryResponse.getCountry().getCountryCode());
 		System.out.println("************************************************");
 		System.out.println();
+
 	}
 
 	public void showAllCountries() {
+
 		CountriesRequest request = new CountriesRequest();
 		CountriesResponse response = countryProcessorPort.getCountries(request);
 		List<com.countries.soap.Country> countries = response.getCountries();
@@ -64,6 +87,7 @@ public class ClientOperations {
 		}
 		System.out.println("************************************************");
 		System.out.println();
+		System.out.println(request.toString());
 	}
 
 	public void getCountryDetailsByCountryCode() {
@@ -127,7 +151,6 @@ public class ClientOperations {
 		String countryName = input.nextLine();
 		System.out.println("Enter Year:");
 		int year = input.nextInt();
-
 		CountryNameAndYearRequest request = new CountryNameAndYearRequest(new CountryNameAndYear(countryName, year));
 		UnemploymentByCountryNameAndYearResponse response = countryProcessorPort
 				.getUnemploymentByCountryNameAndYear(request);
@@ -140,7 +163,6 @@ public class ClientOperations {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter Year:");
 		int year = input.nextInt();
-
 		YearRequest request = new YearRequest(year);
 		UnemploymentByYearResponse response = countryProcessorPort.getUnemploymentByYear(request);
 		System.out.println("********************RESULT**********************");
@@ -182,19 +204,17 @@ public class ClientOperations {
 		String countryName = input.nextLine();
 		System.out.println("Enter Year:");
 		int year = input.nextInt();
-
 		CountryNameAndYearRequest request = new CountryNameAndYearRequest(new CountryNameAndYear(countryName, year));
 		GdpByCountryNameAndYearResponse response = countryProcessorPort.getGprByCountryNameAndYear(request);
 		System.out.println("********************RESULT**********************");
 		System.out.println("Gros Domestic Product in " + countryName + " in year " + year + " - " + response.getGdp());
 		System.out.println("************************************************");
 	}
-	
-	public void getGdpByYear(){
+
+	public void getGdpByYear() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter Year:");
 		int year = input.nextInt();
-
 		YearRequest request = new YearRequest(year);
 		GdpByYearResponse response = countryProcessorPort.getGdpByYear(request);
 		List<CountryNameAndGdp> countries = response.getCountryNameAndGdp();

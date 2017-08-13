@@ -2,7 +2,33 @@ package com.countries.client;
 
 import java.util.Scanner;
 
+import javax.persistence.NoResultException;
+
+import com.countries.entity.UserEntity;
+import com.countries.repository.UserRepository;
+import com.countries.repository.UserRepositoryImpl;
+
 public class Menu {
+	
+	private static String userName;
+	private static String password;
+	
+	public static String getUserName() {
+		return userName;
+	}
+
+	public static void setUserName(String userName) {
+		Menu.userName = userName;
+	}
+
+	public static String getPassword() {
+		return password;
+	}
+
+	public static void setPassword(String password) {
+		Menu.password = password;
+	}
+
 
 
 	public void showMainMenu() {
@@ -17,11 +43,10 @@ public class Menu {
 		System.out.println("9\t-\tShow gros domestic product by country name and year");
 		System.out.println("10\t-\tShow gros domestic product year");
 		System.out.println("Enter value:");
-		
+
 		Scanner input = new Scanner(System.in);
 		int value = input.nextInt();
 
-		
 		ClientOperations clientOperations = new ClientOperations();
 		switch (value) {
 		case 1: {
@@ -74,10 +99,34 @@ public class Menu {
 			showMainMenu();
 			break;
 		}
-		default:{
+		default: {
 			showMainMenu();
 		}
 		}
 	}
 
+	public void loginMenu() {
+
+		boolean looged = false;
+		while (looged == false) {
+			System.out.println("Enter your login");
+			Scanner input = new Scanner(System.in);
+			String login = input.nextLine();
+			System.out.println("Enter your password:");
+			String pass = input.nextLine();
+			try {
+				UserRepository repository = new UserRepositoryImpl();
+				UserEntity user = repository.findUser(login, pass);
+				if (user != null) {
+					userName = login;
+					password = pass;
+					System.out.println("Login Successful....");
+					System.out.println("Welcome " + user.getUserName());
+					looged = true;
+				}
+			} catch (NoResultException e) {
+				System.out.println("Incorrect login or password !!!");
+			}
+		}
+	}
 }
