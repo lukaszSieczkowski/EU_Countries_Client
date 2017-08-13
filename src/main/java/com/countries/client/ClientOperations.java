@@ -14,6 +14,7 @@ import org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor;
 import org.apache.wss4j.dom.WSConstants;
 import org.apache.wss4j.dom.handler.WSHandlerConstants;
 
+import com.countries.secuirity.PasswordCallback;
 import com.countries.soap.CountriesRequest;
 import com.countries.soap.CountriesResponse;
 import com.countries.soap.Country;

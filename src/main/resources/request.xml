@@ -1,4 +1,3 @@
-
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
 	<SOAP-ENV:Header xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
 		<wsse:Security
@@ -6,20 +5,17 @@
 			xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
 			soap:mustUnderstand="1">
 			<wsse:UsernameToken
-				wsu:Id="UsernameToken-692d6c85-68c8-4ef0-8f27-2069c58fc7e2">
+				wsu:Id="UsernameToken-b93a122c-99dc-4dbb-90f2-b60e613bb357">
 				<wsse:Username>Monika</wsse:Username>
 				<wsse:Password
 					Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">judo</wsse:Password>
 			</wsse:UsernameToken>
 		</wsse:Security>
+		<SiteName xmlns="http://www.countries.com/">http://www.countries.com</SiteName>
 	</SOAP-ENV:Header>
 	<soap:Body>
-		<ns2:getCountryById xmlns:ns2="http://soap.countries.com/">
-			<arg0>
-				<country_code>PL</country_code>
-			</arg0>
-		</ns2:getCountryById>
+		<ns2:getCountries xmlns:ns2="http://soap.countries.com/">
+			<arg0 />
+		</ns2:getCountries>
 	</soap:Body>
 </soap:Envelope>
-
-

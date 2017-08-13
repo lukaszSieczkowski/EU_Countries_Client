@@ -1,4 +1,4 @@
-package com.countries.client;
+package com.countries.secuirity;
 
 import java.io.IOException;
 
@@ -7,6 +7,8 @@ import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.callback.UnsupportedCallbackException;
 
 import org.apache.wss4j.common.ext.WSPasswordCallback;
+
+import com.countries.client.Menu;
 
 public class PasswordCallback implements CallbackHandler {
 
