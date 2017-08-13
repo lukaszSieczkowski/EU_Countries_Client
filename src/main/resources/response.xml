@@ -1,0 +1,15 @@
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<SOAP-ENV:Header xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" />
+	<soap:Body>
+		<ns2:getCountryByIdResponse xmlns:ns2="http://soap.countries.com/">
+			<return>
+				<country>
+					<country_name>Poland</country_name>
+					<country_code>PL</country_code>
+				</country>
+			</return>
+		</ns2:getCountryByIdResponse>
+	</soap:Body>
+</soap:Envelope>
+

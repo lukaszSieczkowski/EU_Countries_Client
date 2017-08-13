@@ -50,7 +50,7 @@ public class ClientOperations {
 
 			Map<String, Object> props = new HashMap<String, Object>();
 			props.put(WSHandlerConstants.ACTION, WSHandlerConstants.USERNAME_TOKEN);
-			props.put(WSHandlerConstants.USER, "cxf");
+			props.put(WSHandlerConstants.USER, Menu.getUserName());
 			props.put(WSHandlerConstants.PASSWORD_TYPE, WSConstants.PW_TEXT);
 			props.put(WSHandlerConstants.PW_CALLBACK_CLASS, PasswordCallback.class.getName());
 			WSS4JOutInterceptor wssOut = new WSS4JOutInterceptor(props);
