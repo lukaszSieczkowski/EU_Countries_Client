@@ -12,11 +12,10 @@ import com.countries.client.Menu;
 
 public class PasswordCallback implements CallbackHandler {
 
-	@SuppressWarnings("unused")
 	@Override
 	public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
-		for (int i = 0; i < callbacks.length; i++) {
-			WSPasswordCallback wpc = (WSPasswordCallback) callbacks[i];
+		for (Callback callback : callbacks) {
+			WSPasswordCallback wpc = (WSPasswordCallback) callback;
 			wpc.setIdentifier(Menu.getUserName());
 			wpc.setPassword(Menu.getPassword());
 			return;

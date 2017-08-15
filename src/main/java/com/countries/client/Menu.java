@@ -9,7 +9,6 @@ import com.countries.repository.UserRepository;
 import com.countries.repository.UserRepositoryImpl;
 
 
-
 public class Menu {
 	
 	private static String userName;

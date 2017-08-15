@@ -10,6 +10,7 @@ import java.util.Scanner;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.endpoint.Endpoint;
 import org.apache.cxf.frontend.ClientProxy;
+import org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor;
 import org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor;
 import org.apache.wss4j.dom.WSConstants;
 import org.apache.wss4j.dom.handler.WSHandlerConstants;
@@ -49,19 +50,34 @@ public class ClientOperations {
 			Client client = ClientProxy.getClient(countryProcessorPort);
 			Endpoint endpoint = client.getEndpoint();
 
-			Map<String, Object> props = new HashMap<String, Object>();
-			props.put(WSHandlerConstants.ACTION, "UsernameToken Encrypt");
-			props.put(WSHandlerConstants.USER, Menu.getUserName());
-			props.put(WSHandlerConstants.PASSWORD_TYPE, WSConstants.PW_TEXT);
-			props.put(WSHandlerConstants.PW_CALLBACK_CLASS, PasswordCallback.class.getName());
-			
-			
-			props.put(WSHandlerConstants.ENCRYPTION_USER, "myservicekey");
-			props.put(WSHandlerConstants.ENC_PROP_FILE, "etc/clientKeyStore.properties");
-			WSS4JOutInterceptor wssOut = new WSS4JOutInterceptor(props);
-			endpoint.getOutInterceptors().add(wssOut);
-		} catch (MalformedURLException e) {
+			Map<String, Object> inProps = new HashMap<String, Object>();
+			inProps.put(WSHandlerConstants.ACTION, "UsernameToken Encrypt Signature");
+			inProps.put(WSHandlerConstants.USER, Menu.getUserName());
+			inProps.put(WSHandlerConstants.PASSWORD_TYPE, WSConstants.PW_TEXT);
+			inProps.put(WSHandlerConstants.PW_CALLBACK_CLASS, PasswordCallback.class.getName());
 
+			inProps.put(WSHandlerConstants.ENCRYPTION_USER, "myservicekey");
+			inProps.put(WSHandlerConstants.ENC_PROP_FILE, "etc/clientKeyStore.properties");
+			/**
+			inProps.put(WSHandlerConstants.SIGNATURE_USER, "myclientkey");
+			inProps.put(WSHandlerConstants.SIG_PROP_FILE, "etc/clientKeyStore.properties");
+			 */
+			WSS4JOutInterceptor wssOut = new WSS4JOutInterceptor(inProps);
+			endpoint.getOutInterceptors().add(wssOut);
+
+			/**
+			  HashMap<String, Object> inProps = new HashMap<>();
+			  inProps.put(WSHandlerConstants.ACTION, "Encrypt Signature");
+			  inProps.put(WSHandlerConstants.DEC_PROP_FILE,"etc/clientKeyStore.properties");
+			  inProps.put(WSHandlerConstants.PW_CALLBACK_CLASS,
+			  PasswordCallback.class.getName());
+			  inProps.put(WSHandlerConstants.SIG_PROP_FILE,"etc/clientKeyStore.properties");
+			  
+			  WSS4JInInterceptor wssIn = new WSS4JInInterceptor(inProps);
+			  endpoint.getInInterceptors().add(wssIn);
+			 */
+
+		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
 	}
