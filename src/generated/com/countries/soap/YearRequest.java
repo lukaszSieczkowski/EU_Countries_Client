@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 public class YearRequest {
 
     protected int year;
-    
+
     public YearRequest() {
 		super();
 	}

@@ -43,7 +43,6 @@ public class CountryNameAndYear {
 	}
 
 	public CountryNameAndYear(String countryName, int year) {
-		super();
 		this.countryName = countryName;
 		this.year = year;
 	}

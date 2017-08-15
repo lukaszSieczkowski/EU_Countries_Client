@@ -36,6 +36,8 @@ import com.countries.soap.UnemploymentByCountryNameResponse;
 import com.countries.soap.UnemploymentByYearResponse;
 import com.countries.soap.YearRequest;
 
+
+
 public class ClientOperations {
 
 	private CountryProcessorService service;
@@ -50,7 +52,7 @@ public class ClientOperations {
 			Endpoint endpoint = client.getEndpoint();
 
 			Map<String, Object> props = new HashMap<String, Object>();
-			props.put(WSHandlerConstants.ACTION, WSHandlerConstants.USERNAME_TOKEN);
+			props.put(WSHandlerConstants.ACTION, "UsernameToken");
 			props.put(WSHandlerConstants.USER, Menu.getUserName());
 			props.put(WSHandlerConstants.PASSWORD_TYPE, WSConstants.PW_TEXT);
 			props.put(WSHandlerConstants.PW_CALLBACK_CLASS, PasswordCallback.class.getName());

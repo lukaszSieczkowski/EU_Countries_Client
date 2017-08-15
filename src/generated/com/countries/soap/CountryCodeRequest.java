@@ -33,17 +33,18 @@ import javax.xml.bind.annotation.XmlType;
 public class CountryCodeRequest {
 
     @XmlElement(name = "country_code", required = true)
-    private String countryCode;
-    
-    public CountryCodeRequest(){
-    	
-    }
-    
-    public CountryCodeRequest(String countryCode){
-    	this.countryCode = countryCode;
-    }
+    protected String countryCode;
 
-    /**
+
+    public CountryCodeRequest() {
+		super();
+	}
+
+	public CountryCodeRequest(String countryCode) {
+		this.countryCode =countryCode;
+	}
+
+	/**
      * Gets the value of the countryCode property.
      * 
      * @return
