@@ -36,8 +36,6 @@ import com.countries.soap.UnemploymentByCountryNameResponse;
 import com.countries.soap.UnemploymentByYearResponse;
 import com.countries.soap.YearRequest;
 
-
-
 public class ClientOperations {
 
 	private CountryProcessorService service;
