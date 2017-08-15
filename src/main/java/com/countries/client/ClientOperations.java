@@ -50,39 +50,35 @@ public class ClientOperations {
 			Client client = ClientProxy.getClient(countryProcessorPort);
 			Endpoint endpoint = client.getEndpoint();
 
-			Map<String, Object> inProps = new HashMap<String, Object>();
-			inProps.put(WSHandlerConstants.ACTION, "UsernameToken Encrypt Signature");
-			inProps.put(WSHandlerConstants.USER, Menu.getUserName());
-			inProps.put(WSHandlerConstants.PASSWORD_TYPE, WSConstants.PW_TEXT);
-			inProps.put(WSHandlerConstants.PW_CALLBACK_CLASS, PasswordCallback.class.getName());
+			Map<String, Object> outProps = new HashMap<String, Object>();
+			outProps.put(WSHandlerConstants.ACTION, "UsernameToken Encrypt");
+			outProps.put(WSHandlerConstants.USER, Menu.getUserName());
+			outProps.put(WSHandlerConstants.PASSWORD_TYPE, WSConstants.PW_TEXT);
+			outProps.put(WSHandlerConstants.PW_CALLBACK_CLASS, PasswordCallback.class.getName());
 
-			inProps.put(WSHandlerConstants.ENCRYPTION_USER, "myservicekey");
-			inProps.put(WSHandlerConstants.ENC_PROP_FILE, "etc/clientKeyStore.properties");
-			/**
-			inProps.put(WSHandlerConstants.SIGNATURE_USER, "myclientkey");
-			inProps.put(WSHandlerConstants.SIG_PROP_FILE, "etc/clientKeyStore.properties");
-			 */
-			WSS4JOutInterceptor wssOut = new WSS4JOutInterceptor(inProps);
+			outProps.put(WSHandlerConstants.ENCRYPTION_USER, "myservicekey");
+			outProps.put(WSHandlerConstants.ENC_PROP_FILE, "etc/clientKeyStore.properties");
+/**
+			outProps.put(WSHandlerConstants.SIGNATURE_USER, "myclientkey" );
+			outProps.put(WSHandlerConstants.SIG_PROP_FILE, "etc/clientKeyStore.properties");
+*/
+			WSS4JOutInterceptor wssOut = new WSS4JOutInterceptor(outProps);
 			endpoint.getOutInterceptors().add(wssOut);
 
-			/**
-			  HashMap<String, Object> inProps = new HashMap<>();
-			  inProps.put(WSHandlerConstants.ACTION, "Encrypt Signature");
-			  inProps.put(WSHandlerConstants.DEC_PROP_FILE,"etc/clientKeyStore.properties");
-			  inProps.put(WSHandlerConstants.PW_CALLBACK_CLASS,
-			  PasswordCallback.class.getName());
-			  inProps.put(WSHandlerConstants.SIG_PROP_FILE,"etc/clientKeyStore.properties");
-			  
-			  WSS4JInInterceptor wssIn = new WSS4JInInterceptor(inProps);
-			  endpoint.getInInterceptors().add(wssIn);
-			 */
+			HashMap<String, Object> inProps = new HashMap<>();
+			inProps.put(WSHandlerConstants.ACTION, "Encrypt");
+			inProps.put(WSHandlerConstants.DEC_PROP_FILE, "etc/clientKeyStore.properties");
+			inProps.put(WSHandlerConstants.PW_CALLBACK_CLASS, PasswordCallback.class.getName());
+		//	inProps.put(WSHandlerConstants.SIG_PROP_FILE, "etc/clientKeyStore.properties");
+
+			WSS4JInInterceptor wssIn = new WSS4JInInterceptor(inProps);
+			endpoint.getInInterceptors().add(wssIn);
 
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	
 	public void showCountryByCountryCode() {
 		System.out.println("Enter Country Code:");
 		Scanner input = new Scanner(System.in);
