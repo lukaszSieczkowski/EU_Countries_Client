@@ -35,16 +35,7 @@ public class CountryCodeRequest {
     @XmlElement(name = "country_code", required = true)
     protected String countryCode;
 
-
-    public CountryCodeRequest() {
-		super();
-	}
-
-	public CountryCodeRequest(String countryCode) {
-		this.countryCode =countryCode;
-	}
-
-	/**
+    /**
      * Gets the value of the countryCode property.
      * 
      * @return

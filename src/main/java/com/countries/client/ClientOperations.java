@@ -50,10 +50,14 @@ public class ClientOperations {
 			Endpoint endpoint = client.getEndpoint();
 
 			Map<String, Object> props = new HashMap<String, Object>();
-			props.put(WSHandlerConstants.ACTION, "UsernameToken");
+			props.put(WSHandlerConstants.ACTION, "UsernameToken Encrypt");
 			props.put(WSHandlerConstants.USER, Menu.getUserName());
 			props.put(WSHandlerConstants.PASSWORD_TYPE, WSConstants.PW_TEXT);
 			props.put(WSHandlerConstants.PW_CALLBACK_CLASS, PasswordCallback.class.getName());
+			
+			
+			props.put(WSHandlerConstants.ENCRYPTION_USER, "myservicekey");
+			props.put(WSHandlerConstants.ENC_PROP_FILE, "etc/clientKeyStore.properties");
 			WSS4JOutInterceptor wssOut = new WSS4JOutInterceptor(props);
 			endpoint.getOutInterceptors().add(wssOut);
 		} catch (MalformedURLException e) {
@@ -67,7 +71,8 @@ public class ClientOperations {
 		Scanner input = new Scanner(System.in);
 		String value = input.nextLine();
 
-		CountryCodeRequest request = new CountryCodeRequest(value);
+		CountryCodeRequest request = new CountryCodeRequest();
+		request.setCountryCode(value);
 		CountryResponse countryResponse = countryProcessorPort.getCountryById(request);
 		System.out.println("********************RESULT**********************");
 		System.out.println(
@@ -95,7 +100,8 @@ public class ClientOperations {
 		System.out.println("Enter Country Code:");
 		Scanner input = new Scanner(System.in);
 		String value = input.nextLine();
-		CountryCodeRequest request = new CountryCodeRequest(value);
+		CountryCodeRequest request = new CountryCodeRequest();
+		request.setCountryCode(value);
 		CountryDetailsResponse response = countryProcessorPort.getCountryDetailsByCountryCode(request);
 		System.out.println("********************RESULT**********************");
 		System.out.println("Area - " + response.getCountryDetails().getArea());
@@ -112,7 +118,8 @@ public class ClientOperations {
 		System.out.println("Enter Country Name:");
 		Scanner input = new Scanner(System.in);
 		String value = input.nextLine();
-		CountryNameRequest request = new CountryNameRequest(value);
+		CountryNameRequest request = new CountryNameRequest();
+		request.setCountryName(value);
 		CountryDetailsResponse response = countryProcessorPort.getCountryDetailsByCountryName(request);
 		System.out.println("********************RESULT**********************");
 		System.out.println("Area - " + response.getCountryDetails().getArea());
@@ -129,7 +136,8 @@ public class ClientOperations {
 		System.out.println("Enter Country Name:");
 		Scanner input = new Scanner(System.in);
 		String value = input.nextLine();
-		CountryNameRequest request = new CountryNameRequest(value);
+		CountryNameRequest request = new CountryNameRequest();
+		request.setCountryName(value);
 		UnemploymentByCountryNameResponse response = countryProcessorPort.getUnemploymentByCountry(request);
 		System.out.println("********************RESULT**********************");
 		System.out.println("Unemployment in 2003 - " + response.getUnemployment().getUnemployment2003() + " %");
@@ -152,7 +160,11 @@ public class ClientOperations {
 		String countryName = input.nextLine();
 		System.out.println("Enter Year:");
 		int year = input.nextInt();
-		CountryNameAndYearRequest request = new CountryNameAndYearRequest(new CountryNameAndYear(countryName, year));
+		CountryNameAndYear countryNameAndYear = new CountryNameAndYear();
+		countryNameAndYear.setCountryName(countryName);
+		countryNameAndYear.setYear(year);
+		CountryNameAndYearRequest request = new CountryNameAndYearRequest();
+		request.setCountryNameAndYear(countryNameAndYear);
 		UnemploymentByCountryNameAndYearResponse response = countryProcessorPort
 				.getUnemploymentByCountryNameAndYear(request);
 		System.out.println("********************RESULT**********************");
@@ -164,7 +176,8 @@ public class ClientOperations {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter Year:");
 		int year = input.nextInt();
-		YearRequest request = new YearRequest(year);
+		YearRequest request = new YearRequest();
+		request.setYear(year);
 		UnemploymentByYearResponse response = countryProcessorPort.getUnemploymentByYear(request);
 		System.out.println("********************RESULT**********************");
 		List<CountryNameAndUnemployment> countries = response.getCountryNameAndYear();
@@ -180,7 +193,8 @@ public class ClientOperations {
 		System.out.println("Enter Country Name:");
 		Scanner input = new Scanner(System.in);
 		String value = input.nextLine();
-		CountryNameRequest request = new CountryNameRequest(value);
+		CountryNameRequest request = new CountryNameRequest();
+		request.setCountryName(value);
 		GdpByCountryNameResponse response = countryProcessorPort.getGprByCountry(request);
 		System.out.println("********************RESULT**********************");
 		System.out.println("Gros Domestic Product in 2003 - " + response.getGdp().getGdp2003() + " %");
@@ -205,7 +219,11 @@ public class ClientOperations {
 		String countryName = input.nextLine();
 		System.out.println("Enter Year:");
 		int year = input.nextInt();
-		CountryNameAndYearRequest request = new CountryNameAndYearRequest(new CountryNameAndYear(countryName, year));
+		CountryNameAndYear countryNameAndYear = new CountryNameAndYear();
+		countryNameAndYear.setCountryName(countryName);
+		countryNameAndYear.setYear(year);
+		CountryNameAndYearRequest request = new CountryNameAndYearRequest();
+		request.setCountryNameAndYear(countryNameAndYear);
 		GdpByCountryNameAndYearResponse response = countryProcessorPort.getGprByCountryNameAndYear(request);
 		System.out.println("********************RESULT**********************");
 		System.out.println("Gros Domestic Product in " + countryName + " in year " + year + " - " + response.getGdp());
@@ -216,7 +234,8 @@ public class ClientOperations {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter Year:");
 		int year = input.nextInt();
-		YearRequest request = new YearRequest(year);
+		YearRequest request = new YearRequest();
+		request.setYear(year);
 		GdpByYearResponse response = countryProcessorPort.getGdpByYear(request);
 		List<CountryNameAndGdp> countries = response.getCountryNameAndGdp();
 		System.out.println("********************RESULT**********************");
