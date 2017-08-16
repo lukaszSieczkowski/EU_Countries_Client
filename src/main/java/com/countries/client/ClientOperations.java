@@ -58,6 +58,7 @@ public class ClientOperations {
 
 			outProps.put(WSHandlerConstants.ENCRYPTION_USER, "myservicekey");
 			outProps.put(WSHandlerConstants.ENC_PROP_FILE, "etc/clientKeyStore.properties");
+			outProps.put(WSHandlerConstants.ENCRYPTION_PARTS,"{Content}(http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd}Security;{Content}{http://schemas.xmlsoap.org/soap/envelope/}Body");
 
 			outProps.put(WSHandlerConstants.SIGNATURE_USER, "myclientkey");
 			outProps.put(WSHandlerConstants.SIG_PROP_FILE, "etc/clientKeyStore.properties");
