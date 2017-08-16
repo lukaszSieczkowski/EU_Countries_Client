@@ -58,12 +58,12 @@ public class ClientOperations {
 
 			outProps.put(WSHandlerConstants.ENCRYPTION_USER, "myservicekey");
 			outProps.put(WSHandlerConstants.ENC_PROP_FILE, "etc/clientKeyStore.properties");
-			
-			outProps.put(WSHandlerConstants.SIGNATURE_USER, "myclientkey" );
+
+			outProps.put(WSHandlerConstants.SIGNATURE_USER, "myclientkey");
 			outProps.put(WSHandlerConstants.SIG_PROP_FILE, "etc/clientKeyStore.properties");
-			
+
 			outProps.put("timeToLive", "20");
-			
+
 			WSS4JOutInterceptor wssOut = new WSS4JOutInterceptor(outProps);
 			endpoint.getOutInterceptors().add(wssOut);
 

@@ -8,12 +8,11 @@ import com.countries.entity.UserEntity;
 import com.countries.repository.UserRepository;
 import com.countries.repository.UserRepositoryImpl;
 
-
 public class Menu {
-	
+
 	private static String userName;
 	private static String password;
-	
+
 	public static String getUserName() {
 		return userName;
 	}
@@ -29,8 +28,6 @@ public class Menu {
 	public static void setPassword(String password) {
 		Menu.password = password;
 	}
-
-
 
 	public void showMainMenu() {
 		System.out.println("1\t-\tShow country by country code (ex. PL,DE,NL)");
