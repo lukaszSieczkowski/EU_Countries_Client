@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="a533186b-2579-424c-9d10-bf660790f2ac" activeEnvironment="Default" name="MockService" resourceRoot="" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="8bef4bd7-707d-4d2d-a002-9f49f2246337" wsaVersion="NONE" name="CountryProcessorServiceSoapBinding" type="wsdl" bindingName="{http://soap.countries.com/}CountryProcessorServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="file:/D:/Łukasz/JAVA/MOJE%20PROJEKTY/EU_Countries_Client/src/main/resources/EU_Countries_Client.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\D:\Łukasz\JAVA\MOJE%20PROJEKTY\EU_Countries_Client\src\main\resources\EU_Countries_Client.wsdl"><con:part><con:url>file:\D:\Łukasz\JAVA\MOJE%20PROJEKTY\EU_Countries_Client\src\main\resources\EU_Countries_Client.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="CountryProcessorService" targetNamespace="http://soap.countries.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://soap.countries.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://soap.countries.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getCountries" type="tns:getCountries"/>
+      <xs:element name="getCountriesResponse" type="tns:getCountriesResponse"/>
+      <xs:element name="getCountryById" type="tns:getCountryById"/>
+      <xs:element name="getCountryByIdResponse" type="tns:getCountryByIdResponse"/>
+      <xs:element name="getCountryDetailsByCountryCode" type="tns:getCountryDetailsByCountryCode"/>
+      <xs:element name="getCountryDetailsByCountryCodeResponse" type="tns:getCountryDetailsByCountryCodeResponse"/>
+      <xs:element name="getCountryDetailsByCountryName" type="tns:getCountryDetailsByCountryName"/>
+      <xs:element name="getCountryDetailsByCountryNameResponse" type="tns:getCountryDetailsByCountryNameResponse"/>
+      <xs:element name="getGdpByYear" type="tns:getGdpByYear"/>
+      <xs:element name="getGdpByYearResponse" type="tns:getGdpByYearResponse"/>
+      <xs:element name="getGprByCountry" type="tns:getGprByCountry"/>
+      <xs:element name="getGprByCountryNameAndYear" type="tns:getGprByCountryNameAndYear"/>
+      <xs:element name="getGprByCountryNameAndYearResponse" type="tns:getGprByCountryNameAndYearResponse"/>
+      <xs:element name="getGprByCountryResponse" type="tns:getGprByCountryResponse"/>
+      <xs:element name="getUnemploymentByCountry" type="tns:getUnemploymentByCountry"/>
+      <xs:element name="getUnemploymentByCountryNameAndYear" type="tns:getUnemploymentByCountryNameAndYear"/>
+      <xs:element name="getUnemploymentByCountryNameAndYearResponse" type="tns:getUnemploymentByCountryNameAndYearResponse"/>
+      <xs:element name="getUnemploymentByCountryResponse" type="tns:getUnemploymentByCountryResponse"/>
+      <xs:element name="getUnemploymentByYear" type="tns:getUnemploymentByYear"/>
+      <xs:element name="getUnemploymentByYearResponse" type="tns:getUnemploymentByYearResponse"/>
+      <xs:complexType name="getUnemploymentByCountryNameAndYear">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:countryNameAndYearRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="countryNameAndYearRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="country_name_and_year" type="tns:countryNameAndYear"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="countryNameAndYear">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="country_name" type="xs:string"/>
+          <xs:element name="year" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getUnemploymentByCountryNameAndYearResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:unemploymentByCountryNameAndYearResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="unemploymentByCountryNameAndYearResponse">
+        <xs:sequence>
+          <xs:element name="unemployment" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCountryById">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:countryCodeRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="countryCodeRequest">
+        <xs:sequence>
+          <xs:element name="country_code" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCountryByIdResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:countryResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="countryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="country" type="tns:country"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="country">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="country_name" type="xs:string"/>
+          <xs:element minOccurs="0" name="country_code" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getGdpByYear">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:yearRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="yearRequest">
+        <xs:sequence>
+          <xs:element name="year" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getGdpByYearResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:gdpByYearResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="gdpByYearResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="country_name_and_gdp" type="tns:countryNameAndGdp"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="countryNameAndGdp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="country_name" type="xs:string"/>
+          <xs:element name="gdp" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getGprByCountry">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:countryNameRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="countryNameRequest">
+        <xs:sequence>
+          <xs:element name="country_name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getGprByCountryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:gdpByCountryNameResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="gdpByCountryNameResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="gdp" type="tns:grosDomesticProduct"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="grosDomesticProduct">
+        <xs:sequence>
+          <xs:element name="gdp_2003" type="xs:double"/>
+          <xs:element name="gdp_2004" type="xs:double"/>
+          <xs:element name="gdp_2005" type="xs:double"/>
+          <xs:element name="gdp_2006" type="xs:double"/>
+          <xs:element name="gdp_2007" type="xs:double"/>
+          <xs:element name="gdp_2008" type="xs:double"/>
+          <xs:element name="gdp_2009" type="xs:double"/>
+          <xs:element name="gdp_2010" type="xs:double"/>
+          <xs:element name="gdp_2011" type="xs:double"/>
+          <xs:element name="gdp_2012" type="xs:double"/>
+          <xs:element name="gdp_2013" type="xs:double"/>
+          <xs:element name="gdp_2014" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCountries">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:countriesRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="countriesRequest">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getCountriesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:countriesResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="countriesResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="countries" type="tns:country"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getGprByCountryNameAndYear">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:countryNameAndYearRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getGprByCountryNameAndYearResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:gdpByCountryNameAndYearResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="gdpByCountryNameAndYearResponse">
+        <xs:sequence>
+          <xs:element name="gdp" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCountryDetailsByCountryCode">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:countryCodeRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCountryDetailsByCountryCodeResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:countryDetailsResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="countryDetailsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="country_details" type="tns:countryDetails"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="countryDetails">
+        <xs:sequence>
+          <xs:element name="area" type="xs:long"/>
+          <xs:element name="population" type="xs:long"/>
+          <xs:element minOccurs="0" name="capital" type="xs:string"/>
+          <xs:element minOccurs="0" name="currency" type="xs:string"/>
+          <xs:element name="gros_domestic_product" type="xs:long"/>
+          <xs:element name="gros_domestic_product_per_person" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getUnemploymentByCountry">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:countryNameRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getUnemploymentByCountryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:unemploymentByCountryNameResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="unemploymentByCountryNameResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="unemployment" type="tns:unemployment"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="unemployment">
+        <xs:sequence>
+          <xs:element name="unemployment_2003" type="xs:double"/>
+          <xs:element name="unemployment_2004" type="xs:double"/>
+          <xs:element name="unemployment_2005" type="xs:double"/>
+          <xs:element name="unemployment_2006" type="xs:double"/>
+          <xs:element name="unemployment_2007" type="xs:double"/>
+          <xs:element name="unemployment_2008" type="xs:double"/>
+          <xs:element name="unemployment_2009" type="xs:double"/>
+          <xs:element name="unemployment_2010" type="xs:double"/>
+          <xs:element name="unemployment_2011" type="xs:double"/>
+          <xs:element name="unemployment_2012" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCountryDetailsByCountryName">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:countryNameRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getCountryDetailsByCountryNameResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:countryDetailsResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getUnemploymentByYear">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:yearRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getUnemploymentByYearResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:unemploymentByYearResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="unemploymentByYearResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="country_name_and_year" type="tns:countryNameAndUnemployment"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="countryNameAndUnemployment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="country_name" type="xs:string"/>
+          <xs:element name="unemployment" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getCountryById">
+    <wsdl:part element="tns:getCountryById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGprByCountryResponse">
+    <wsdl:part element="tns:getGprByCountryResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUnemploymentByYearResponse">
+    <wsdl:part element="tns:getUnemploymentByYearResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGprByCountry">
+    <wsdl:part element="tns:getGprByCountry" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUnemploymentByCountryNameAndYearResponse">
+    <wsdl:part element="tns:getUnemploymentByCountryNameAndYearResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountries">
+    <wsdl:part element="tns:getCountries" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryDetailsByCountryCodeResponse">
+    <wsdl:part element="tns:getCountryDetailsByCountryCodeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGprByCountryNameAndYearResponse">
+    <wsdl:part element="tns:getGprByCountryNameAndYearResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUnemploymentByCountry">
+    <wsdl:part element="tns:getUnemploymentByCountry" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryByIdResponse">
+    <wsdl:part element="tns:getCountryByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountriesResponse">
+    <wsdl:part element="tns:getCountriesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUnemploymentByYear">
+    <wsdl:part element="tns:getUnemploymentByYear" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUnemploymentByCountryResponse">
+    <wsdl:part element="tns:getUnemploymentByCountryResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUnemploymentByCountryNameAndYear">
+    <wsdl:part element="tns:getUnemploymentByCountryNameAndYear" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGdpByYear">
+    <wsdl:part element="tns:getGdpByYear" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGdpByYearResponse">
+    <wsdl:part element="tns:getGdpByYearResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGprByCountryNameAndYear">
+    <wsdl:part element="tns:getGprByCountryNameAndYear" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryDetailsByCountryCode">
+    <wsdl:part element="tns:getCountryDetailsByCountryCode" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryDetailsByCountryName">
+    <wsdl:part element="tns:getCountryDetailsByCountryName" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCountryDetailsByCountryNameResponse">
+    <wsdl:part element="tns:getCountryDetailsByCountryNameResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CountryProcessor">
+    <wsdl:operation name="getUnemploymentByCountryNameAndYear">
+      <wsdl:input message="tns:getUnemploymentByCountryNameAndYear" name="getUnemploymentByCountryNameAndYear"></wsdl:input>
+      <wsdl:output message="tns:getUnemploymentByCountryNameAndYearResponse" name="getUnemploymentByCountryNameAndYearResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountryById">
+      <wsdl:input message="tns:getCountryById" name="getCountryById"></wsdl:input>
+      <wsdl:output message="tns:getCountryByIdResponse" name="getCountryByIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGdpByYear">
+      <wsdl:input message="tns:getGdpByYear" name="getGdpByYear"></wsdl:input>
+      <wsdl:output message="tns:getGdpByYearResponse" name="getGdpByYearResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGprByCountry">
+      <wsdl:input message="tns:getGprByCountry" name="getGprByCountry"></wsdl:input>
+      <wsdl:output message="tns:getGprByCountryResponse" name="getGprByCountryResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountries">
+      <wsdl:input message="tns:getCountries" name="getCountries"></wsdl:input>
+      <wsdl:output message="tns:getCountriesResponse" name="getCountriesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGprByCountryNameAndYear">
+      <wsdl:input message="tns:getGprByCountryNameAndYear" name="getGprByCountryNameAndYear"></wsdl:input>
+      <wsdl:output message="tns:getGprByCountryNameAndYearResponse" name="getGprByCountryNameAndYearResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountryDetailsByCountryCode">
+      <wsdl:input message="tns:getCountryDetailsByCountryCode" name="getCountryDetailsByCountryCode"></wsdl:input>
+      <wsdl:output message="tns:getCountryDetailsByCountryCodeResponse" name="getCountryDetailsByCountryCodeResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUnemploymentByCountry">
+      <wsdl:input message="tns:getUnemploymentByCountry" name="getUnemploymentByCountry"></wsdl:input>
+      <wsdl:output message="tns:getUnemploymentByCountryResponse" name="getUnemploymentByCountryResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountryDetailsByCountryName">
+      <wsdl:input message="tns:getCountryDetailsByCountryName" name="getCountryDetailsByCountryName"></wsdl:input>
+      <wsdl:output message="tns:getCountryDetailsByCountryNameResponse" name="getCountryDetailsByCountryNameResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUnemploymentByYear">
+      <wsdl:input message="tns:getUnemploymentByYear" name="getUnemploymentByYear"></wsdl:input>
+      <wsdl:output message="tns:getUnemploymentByYearResponse" name="getUnemploymentByYearResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CountryProcessorServiceSoapBinding" type="tns:CountryProcessor">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getUnemploymentByCountryNameAndYear">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUnemploymentByCountryNameAndYear">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUnemploymentByCountryNameAndYearResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountryById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCountryById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountryByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGdpByYear">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getGdpByYear">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getGdpByYearResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGprByCountry">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getGprByCountry">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getGprByCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountries">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCountries">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountriesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGprByCountryNameAndYear">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getGprByCountryNameAndYear">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getGprByCountryNameAndYearResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountryDetailsByCountryCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCountryDetailsByCountryCode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountryDetailsByCountryCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUnemploymentByCountry">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUnemploymentByCountry">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUnemploymentByCountryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountryDetailsByCountryName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCountryDetailsByCountryName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCountryDetailsByCountryNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUnemploymentByYear">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUnemploymentByYear">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUnemploymentByYearResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CountryProcessorService">
+    <wsdl:port binding="tns:CountryProcessorServiceSoapBinding" name="CountryProcessorPort">
+      <soap:address location="http://localhost:8081/EU_Countries/services/countryProcessor"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://Komputer:8080/EU_Countries_Mockservice</con:endpoint><con:endpoint>http://localhost:8081/EU_Countries/services/countryProcessor</con:endpoint></con:endpoints><con:operation id="08ea31f7-5683-4fd9-9145-2b4967551106" isOneWay="false" action="" name="getCountries" bindingOperationName="getCountries" type="Request-Response" outputName="getCountriesResponse" inputName="getCountries" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4e36401c-11ec-4240-9b1b-29e469c57975" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/EU_Countries/services/countryProcessor</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:getCountries>\r
+         <!--Optional:-->\r
+         <arg0/>\r
+      </soap:getCountries>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getCountries"/></con:call></con:operation><con:operation id="efb4f906-a5c4-4468-b6eb-f2eabd775fde" isOneWay="false" action="" name="getCountryById" bindingOperationName="getCountryById" type="Request-Response" outputName="getCountryByIdResponse" inputName="getCountryById" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e3c7e5c9-6fe1-40c9-b80e-3237468a86e1" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/EU_Countries/services/countryProcessor</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:getCountryById>\r
+         <!--Optional:-->\r
+         <arg0>\r
+            <country_code>?</country_code>\r
+         </arg0>\r
+      </soap:getCountryById>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getCountryById"/></con:call></con:operation><con:operation id="298ec1e6-edb3-4ec0-94de-0b4072a28663" isOneWay="false" action="" name="getCountryDetailsByCountryCode" bindingOperationName="getCountryDetailsByCountryCode" type="Request-Response" outputName="getCountryDetailsByCountryCodeResponse" inputName="getCountryDetailsByCountryCode" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="32f50953-c33e-4432-9e55-31af61066e30" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/EU_Countries/services/countryProcessor</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:getCountryDetailsByCountryCode>\r
+         <!--Optional:-->\r
+         <arg0>\r
+            <country_code>?</country_code>\r
+         </arg0>\r
+      </soap:getCountryDetailsByCountryCode>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getCountryDetailsByCountryCode"/></con:call></con:operation><con:operation id="15fb97fb-785e-4657-b8b8-9f61989e98ee" isOneWay="false" action="" name="getCountryDetailsByCountryName" bindingOperationName="getCountryDetailsByCountryName" type="Request-Response" outputName="getCountryDetailsByCountryNameResponse" inputName="getCountryDetailsByCountryName" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="047980c9-288c-4ed1-a900-37d354a42a07" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/EU_Countries/services/countryProcessor</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:getCountryDetailsByCountryName>\r
+         <!--Optional:-->\r
+         <arg0>\r
+            <country_name>?</country_name>\r
+         </arg0>\r
+      </soap:getCountryDetailsByCountryName>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getCountryDetailsByCountryName"/></con:call></con:operation><con:operation id="467e09dd-f284-4247-a268-6e85d0ba24ea" isOneWay="false" action="" name="getGdpByYear" bindingOperationName="getGdpByYear" type="Request-Response" outputName="getGdpByYearResponse" inputName="getGdpByYear" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0e265e3a-e7ab-4a1e-956e-62babd2dabc2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/EU_Countries/services/countryProcessor</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:getGdpByYear>\r
+         <!--Optional:-->\r
+         <arg0>\r
+            <year>?</year>\r
+         </arg0>\r
+      </soap:getGdpByYear>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getGdpByYear"/></con:call></con:operation><con:operation id="af194a75-9a1e-4082-9b13-8cda61f2248e" isOneWay="false" action="" name="getGprByCountry" bindingOperationName="getGprByCountry" type="Request-Response" outputName="getGprByCountryResponse" inputName="getGprByCountry" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8334873a-414f-444b-8eb3-0bc4b1e441ca" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/EU_Countries/services/countryProcessor</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:getGprByCountry>\r
+         <!--Optional:-->\r
+         <arg0>\r
+            <country_name>?</country_name>\r
+         </arg0>\r
+      </soap:getGprByCountry>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getGprByCountry"/></con:call></con:operation><con:operation id="c6eee179-bc03-4670-a2fc-02e781196547" isOneWay="false" action="" name="getGprByCountryNameAndYear" bindingOperationName="getGprByCountryNameAndYear" type="Request-Response" outputName="getGprByCountryNameAndYearResponse" inputName="getGprByCountryNameAndYear" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="08eec815-d083-47cd-a6e6-88f391bcc850" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/EU_Countries/services/countryProcessor</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:getGprByCountryNameAndYear>\r
+         <!--Optional:-->\r
+         <arg0>\r
+            <!--Optional:-->\r
+            <country_name_and_year>\r
+               <!--Optional:-->\r
+               <country_name>?</country_name>\r
+               <year>?</year>\r
+            </country_name_and_year>\r
+         </arg0>\r
+      </soap:getGprByCountryNameAndYear>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getGprByCountryNameAndYear"/></con:call></con:operation><con:operation id="86b2486f-c538-4c1c-82cb-d7ec73b33dda" isOneWay="false" action="" name="getUnemploymentByCountry" bindingOperationName="getUnemploymentByCountry" type="Request-Response" outputName="getUnemploymentByCountryResponse" inputName="getUnemploymentByCountry" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6ee03e8f-cc2e-434f-9478-ddfff33729f1" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/EU_Countries/services/countryProcessor</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:getUnemploymentByCountry>\r
+         <!--Optional:-->\r
+         <arg0>\r
+            <country_name>?</country_name>\r
+         </arg0>\r
+      </soap:getUnemploymentByCountry>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getUnemploymentByCountry"/></con:call></con:operation><con:operation id="f3d361aa-0282-4769-83da-c35ea8f6d105" isOneWay="false" action="" name="getUnemploymentByCountryNameAndYear" bindingOperationName="getUnemploymentByCountryNameAndYear" type="Request-Response" outputName="getUnemploymentByCountryNameAndYearResponse" inputName="getUnemploymentByCountryNameAndYear" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="aeed9eb1-3438-4dbb-ad71-4790915cb18a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/EU_Countries/services/countryProcessor</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:getUnemploymentByCountryNameAndYear>\r
+         <!--Optional:-->\r
+         <arg0>\r
+            <!--Optional:-->\r
+            <country_name_and_year>\r
+               <!--Optional:-->\r
+               <country_name>?</country_name>\r
+               <year>?</year>\r
+            </country_name_and_year>\r
+         </arg0>\r
+      </soap:getUnemploymentByCountryNameAndYear>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getUnemploymentByCountryNameAndYear"/></con:call></con:operation><con:operation id="f5187bfc-a066-499b-9598-926d33666792" isOneWay="false" action="" name="getUnemploymentByYear" bindingOperationName="getUnemploymentByYear" type="Request-Response" outputName="getUnemploymentByYearResponse" inputName="getUnemploymentByYear" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="20d045c4-be59-4249-943b-da10d4f771e2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/EU_Countries/services/countryProcessor</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:getUnemploymentByYear>\r
+         <!--Optional:-->\r
+         <arg0>\r
+            <year>?</year>\r
+         </arg0>\r
+      </soap:getUnemploymentByYear>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getUnemploymentByYear"/></con:call></con:operation></con:interface><con:mockService id="ca10e3b3-5d9d-4daf-b407-726e1bd7a1f6" port="8080" path="/EU_Countries_Mockservice" host="Komputer" name="CountryProcessorServiceSoapBinding MockService" bindToHostOnly="false" docroot=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="getCountries" id="ae22aade-4d0e-43a9-a530-429cfc45d038" interface="CountryProcessorServiceSoapBinding" operation="getCountries"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="4c7ad933-ba0a-47b6-be0b-61d639a10739" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getCountriesResponse>
+         <!--Optional:-->
+         <return>
+            <!--Zero or more repetitions:-->
+            <countries>
+               <!--Optional:-->
+               <country_name>Poland</country_name>
+               <!--Optional:-->
+               <country_code>PL</country_code>
+            </countries>
+         </return>
+      </soap:getCountriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getCountriesResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="getCountryById" id="83dd7341-f632-48c9-9db6-42c153944161" interface="CountryProcessorServiceSoapBinding" operation="getCountryById"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="f499fad8-c7f9-4eb5-ab51-8e9d3312c125" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getCountryByIdResponse>
+         <!--Optional:-->
+         <return>
+            <!--Optional:-->
+            <country>
+               <!--Optional:-->
+               <country_name>?</country_name>
+               <!--Optional:-->
+               <country_code>?</country_code>
+            </country>
+         </return>
+      </soap:getCountryByIdResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getCountryByIdResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="getCountryDetailsByCountryCode" id="e0fc5ce6-dcd1-4e34-8598-abcdeaeabf8b" interface="CountryProcessorServiceSoapBinding" operation="getCountryDetailsByCountryCode"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="dc85a749-6a6d-40e1-a872-b741a9f4ff82" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getCountryDetailsByCountryCodeResponse>
+         <!--Optional:-->
+         <return>
+            <!--Optional:-->
+            <country_details>
+               <area>?</area>
+               <population>?</population>
+               <!--Optional:-->
+               <capital>?</capital>
+               <!--Optional:-->
+               <currency>?</currency>
+               <gros_domestic_product>?</gros_domestic_product>
+               <gros_domestic_product_per_person>?</gros_domestic_product_per_person>
+            </country_details>
+         </return>
+      </soap:getCountryDetailsByCountryCodeResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getCountryDetailsByCountryCodeResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="getCountryDetailsByCountryName" id="3c4cdfc2-5ed2-4929-a39d-85d5b1b2b462" interface="CountryProcessorServiceSoapBinding" operation="getCountryDetailsByCountryName"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="0eace6da-76e1-45a5-b2b5-07331683cab2" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getCountryDetailsByCountryNameResponse>
+         <!--Optional:-->
+         <return>
+            <!--Optional:-->
+            <country_details>
+               <area>?</area>
+               <population>?</population>
+               <!--Optional:-->
+               <capital>?</capital>
+               <!--Optional:-->
+               <currency>?</currency>
+               <gros_domestic_product>?</gros_domestic_product>
+               <gros_domestic_product_per_person>?</gros_domestic_product_per_person>
+            </country_details>
+         </return>
+      </soap:getCountryDetailsByCountryNameResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getCountryDetailsByCountryNameResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="getGdpByYear" id="15b755d6-8129-4e70-aa97-a87188da99be" interface="CountryProcessorServiceSoapBinding" operation="getGdpByYear"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="1a184e3b-47c4-45bd-b603-241285b6c740" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getGdpByYearResponse>
+         <!--Optional:-->
+         <return>
+            <!--Zero or more repetitions:-->
+            <country_name_and_gdp>
+               <!--Optional:-->
+               <country_name>?</country_name>
+               <gdp>?</gdp>
+            </country_name_and_gdp>
+         </return>
+      </soap:getGdpByYearResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getGdpByYearResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="getGprByCountry" id="3ddbd748-9c43-4029-9e74-14342cef7b5f" interface="CountryProcessorServiceSoapBinding" operation="getGprByCountry"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="05556da9-236e-4051-94f1-70f3b2db1f04" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getGprByCountryResponse>
+         <!--Optional:-->
+         <return>
+            <!--Optional:-->
+            <gdp>
+               <gdp_2003>?</gdp_2003>
+               <gdp_2004>?</gdp_2004>
+               <gdp_2005>?</gdp_2005>
+               <gdp_2006>?</gdp_2006>
+               <gdp_2007>?</gdp_2007>
+               <gdp_2008>?</gdp_2008>
+               <gdp_2009>?</gdp_2009>
+               <gdp_2010>?</gdp_2010>
+               <gdp_2011>?</gdp_2011>
+               <gdp_2012>?</gdp_2012>
+               <gdp_2013>?</gdp_2013>
+               <gdp_2014>?</gdp_2014>
+            </gdp>
+         </return>
+      </soap:getGprByCountryResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getGprByCountryResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="getGprByCountryNameAndYear" id="6fc068e7-47be-477f-881c-b9ad0e24ba22" interface="CountryProcessorServiceSoapBinding" operation="getGprByCountryNameAndYear"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="fa0e5802-869c-4229-a5eb-0472623b4c28" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getGprByCountryNameAndYearResponse>
+         <!--Optional:-->
+         <return>
+            <gdp>?</gdp>
+         </return>
+      </soap:getGprByCountryNameAndYearResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getGprByCountryNameAndYearResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="getUnemploymentByCountry" id="86b8a762-a3af-4e4c-a950-bd40ba590fea" interface="CountryProcessorServiceSoapBinding" operation="getUnemploymentByCountry"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="e25f1580-2970-4408-8dd9-1c3aec96e6bf" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getUnemploymentByCountryResponse>
+         <!--Optional:-->
+         <return>
+            <!--Optional:-->
+            <unemployment>
+               <unemployment_2003>?</unemployment_2003>
+               <unemployment_2004>?</unemployment_2004>
+               <unemployment_2005>?</unemployment_2005>
+               <unemployment_2006>?</unemployment_2006>
+               <unemployment_2007>?</unemployment_2007>
+               <unemployment_2008>?</unemployment_2008>
+               <unemployment_2009>?</unemployment_2009>
+               <unemployment_2010>?</unemployment_2010>
+               <unemployment_2011>?</unemployment_2011>
+               <unemployment_2012>?</unemployment_2012>
+            </unemployment>
+         </return>
+      </soap:getUnemploymentByCountryResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getUnemploymentByCountryResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="getUnemploymentByCountryNameAndYear" id="92f0b2fd-23d9-4f60-b96c-af7238330622" interface="CountryProcessorServiceSoapBinding" operation="getUnemploymentByCountryNameAndYear"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="8cd6b60e-fde7-40d5-8b05-57b26e5eff0a" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getUnemploymentByCountryNameAndYearResponse>
+         <!--Optional:-->
+         <return>
+            <unemployment>?</unemployment>
+         </return>
+      </soap:getUnemploymentByCountryNameAndYearResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getUnemploymentByCountryNameAndYearResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="getUnemploymentByYear" id="16a807ac-c01e-417c-a4a2-f22aa916522b" interface="CountryProcessorServiceSoapBinding" operation="getUnemploymentByYear"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="06fc7d10-810b-4cbf-a55a-c988fa256d12" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getUnemploymentByYearResponse>
+         <!--Optional:-->
+         <return>
+            <!--Zero or more repetitions:-->
+            <country_name_and_year>
+               <!--Optional:-->
+               <country_name>?</country_name>
+               <unemployment>?</unemployment>
+            </country_name_and_year>
+         </return>
+      </soap:getUnemploymentByYearResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getUnemploymentByYearResponse"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

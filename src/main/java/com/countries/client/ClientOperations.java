@@ -56,6 +56,7 @@ public class ClientOperations {
 			props.put(WSHandlerConstants.PW_CALLBACK_CLASS, PasswordCallback.class.getName());
 			WSS4JOutInterceptor wssOut = new WSS4JOutInterceptor(props);
 			endpoint.getOutInterceptors().add(wssOut);
+			
 		} catch (MalformedURLException e) {
 
 			e.printStackTrace();
