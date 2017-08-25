@@ -49,13 +49,6 @@ public class ClientOperations {
 			Client client = ClientProxy.getClient(countryProcessorPort);
 			Endpoint endpoint = client.getEndpoint();
 
-			Map<String, Object> props = new HashMap<String, Object>();
-			props.put(WSHandlerConstants.ACTION, "UsernameToken");
-			props.put(WSHandlerConstants.USER, Menu.getUserName());
-			props.put(WSHandlerConstants.PASSWORD_TYPE, WSConstants.PW_TEXT);
-			props.put(WSHandlerConstants.PW_CALLBACK_CLASS, PasswordCallback.class.getName());
-			WSS4JOutInterceptor wssOut = new WSS4JOutInterceptor(props);
-			endpoint.getOutInterceptors().add(wssOut);
 		} catch (MalformedURLException e) {
 
 			e.printStackTrace();
