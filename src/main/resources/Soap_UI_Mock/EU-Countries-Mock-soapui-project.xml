@@ -523,8 +523,8 @@
             <!--Optional:-->\r
             <country_name_and_year>\r
                <!--Optional:-->\r
-               <country_name>Poland</country_name>\r
-               <year>2005</year>\r
+               <country_name>Austria</country_name>\r
+               <year>2003</year>\r
             </country_name_and_year>\r
          </arg0>\r
       </soap:getGprByCountryNameAndYear>\r
@@ -560,7 +560,7 @@
       <soap:getUnemploymentByYear>\r
          <!--Optional:-->\r
          <arg0>\r
-            <year>2003</year>\r
+            <year>2004</year>\r
          </arg0>\r
       </soap:getUnemploymentByYear>\r
    </soapenv:Body>\r
@@ -1073,15 +1073,15 @@ context.dbConnection=sql
 def row=sql.rows("SELECT gros_domestic_product_"+year+" FROM gros_domestic_product_year_to_year_percentage as g  JOIN country as c ON g.id_country = c.id_country WHERE c.name_country='"+countryName+"'")
 
 requestContext.response = row.getAt("gros_domestic_product_"+year).get(0)
-</con:dispatchPath><con:response name="Response 1" id="f41c53d2-ab8c-42dd-be91-d5aca82c9b76" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
+</con:dispatchPath><con:response name="Response 1" id="f41c53d2-ab8c-42dd-be91-d5aca82c9b76" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns2="http://soap.countries.com/">
    <soapenv:Header/>
    <soapenv:Body>
-      <soap:getGprByCountryNameAndYearResponse>
+      <ns2:getGprByCountryNameAndYearResponse>
          <!--Optional:-->
          <return>
             <gdp>${response}</gdp>
          </return>
-      </soap:getGprByCountryNameAndYearResponse>
+      </ns2:getGprByCountryNameAndYearResponse>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getGprByCountryNameAndYearResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="getUnemploymentByCountryNameAndYear" id="e6c9886d-6e82-45ad-8715-79aacb5cbe50" interface="CountryProcessorServiceSoapBinding" operation="getUnemploymentByCountryNameAndYear"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>import groovy.sql.Sql
 import groovy.xml.*
@@ -1096,15 +1096,15 @@ context.dbConnection=sql
 def row=sql.rows("SELECT unemployment_"+year+" FROM unemployment as u  JOIN country as c ON u.id_country = c.id_country WHERE c.name_country='"+countryName+"'")
 
 requestContext.response = row.getAt("unemployment_"+year).get(0)
-</con:dispatchPath><con:response name="Response 1" id="8bb72aef-497f-49ef-955a-cd7e0671b819" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
+</con:dispatchPath><con:response name="Response 1" id="8bb72aef-497f-49ef-955a-cd7e0671b819" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns2="http://soap.countries.com/">
    <soapenv:Header/>
    <soapenv:Body>
-      <soap:getUnemploymentByCountryNameAndYearResponse>
+      <ns2:getUnemploymentByCountryNameAndYearResponse>
          <!--Optional:-->
          <return>
             <unemployment>${response}</unemployment>
          </return>
-      </soap:getUnemploymentByCountryNameAndYearResponse>
+      </ns2:getUnemploymentByCountryNameAndYearResponse>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.countries.com/CountryProcessor/getUnemploymentByCountryNameAndYearResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="getUnemploymentByYear" id="304bcf46-b979-48b2-ad62-8749ea5e9e9b" interface="CountryProcessorServiceSoapBinding" operation="getUnemploymentByYear"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>import groovy.xml.*
 import jxl.*;
