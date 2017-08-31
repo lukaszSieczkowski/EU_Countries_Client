@@ -825,7 +825,7 @@ xml.return{
 }
 
 context .responseMessage = stringWriter
-
+sql.close()
 
 </con:dispatchPath><con:response name="Response 1" id="01bde755-61d5-4263-b651-4add3654a400" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
    <soapenv:Header/>
@@ -1048,7 +1048,9 @@ xml.unemployment{
 	unemployment_2012(row.getAt("unemployment_2012").get(0))
 }
 
-requestContext.response = stringWriter</con:dispatchPath><con:response name="Response 1" id="235b5677-0c72-477e-a8b4-0e8a3a8763d7" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
+requestContext.response = stringWriter
+sql.close()
+</con:dispatchPath><con:response name="Response 1" id="235b5677-0c72-477e-a8b4-0e8a3a8763d7" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.countries.com/">
    <soapenv:Header/>
    <soapenv:Body>
       <soap:getUnemploymentByCountryResponse>
@@ -1073,6 +1075,7 @@ context.dbConnection=sql
 def row=sql.rows("SELECT gros_domestic_product_"+year+" FROM gros_domestic_product_year_to_year_percentage as g  JOIN country as c ON g.id_country = c.id_country WHERE c.name_country='"+countryName+"'")
 
 requestContext.response = row.getAt("gros_domestic_product_"+year).get(0)
+sql.close()
 </con:dispatchPath><con:response name="Response 1" id="f41c53d2-ab8c-42dd-be91-d5aca82c9b76" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns2="http://soap.countries.com/">
    <soapenv:Header/>
    <soapenv:Body>
@@ -1096,6 +1099,7 @@ context.dbConnection=sql
 def row=sql.rows("SELECT unemployment_"+year+" FROM unemployment as u  JOIN country as c ON u.id_country = c.id_country WHERE c.name_country='"+countryName+"'")
 
 requestContext.response = row.getAt("unemployment_"+year).get(0)
+sql.close()
 </con:dispatchPath><con:response name="Response 1" id="8bb72aef-497f-49ef-955a-cd7e0671b819" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns2="http://soap.countries.com/">
    <soapenv:Header/>
    <soapenv:Body>

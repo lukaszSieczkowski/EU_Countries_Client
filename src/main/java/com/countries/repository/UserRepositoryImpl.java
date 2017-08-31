@@ -23,6 +23,7 @@ public class UserRepositoryImpl implements UserRepository{
 				.createQuery("SELECT u FROM UserEntity u WHERE u.userName = '" + userName + "' AND u.password = '"+password+"'");
 		UserEntity userEntity = (UserEntity) query.getSingleResult();
 		entityManager.close();
+		emFactory.close();
 		return userEntity;
 	}
 
